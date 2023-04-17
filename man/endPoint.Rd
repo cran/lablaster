@@ -2,10 +2,10 @@
 % Please edit documentation in R/endPoint.R
 \name{endPoint}
 \alias{endPoint}
-\title{Detects when the laser blasts through the target sample in a laser ablation mass spectrometry time resolved analysis.}
+\title{Detects when the laser ablates through the target sample in a laser ablation mass spectrometry time resolved analysis.}
 \usage{
 endPoint(
-  df,
+  detectDf,
   dt = 10,
   smoothing = 5,
   timeCol = "Time",
@@ -15,7 +15,7 @@ endPoint(
 )
 }
 \arguments{
-\item{df}{A data frame containing a single time resolved analysis, with a column referencing time and another with the corresponding measured counts data.}
+\item{detectDf}{A data frame containing a single time resolved analysis, with a column referencing time and another with the corresponding measured counts data.}
 
 \item{dt}{An integer that controls the number of observations (rows) are used in calculating a rolling lagged difference in 44Ca signal. Using a lower value for a faster blast through of chamber wall can improve end point sensitivity. Default = 10.}
 
@@ -32,7 +32,7 @@ endPoint(
 \value{
 The function returns a data frame containing the columns:
 \itemize{
-\item dfReturn$df contains a data frame with only the observations between the first data frame row and the endTime.
+\item dfReturn$detectDf contains a data frame with only the observations between the first data frame row and the endTime.
 \item dfReturn$startTime contains the earliest time in your TRA as a numerical value.
 \item df$Return$endTime contains the last time step while the laser is still focussed the desired target in your TRA before the as a numerical value.
 \item df$Return$profile contains a visualisation of your TRA identifying where the laser ablated through the carbonate shell as a ggplot object. This is only available if a profile was generated using profile = "TRUE".
@@ -49,12 +49,12 @@ The function identifies the maximum rate of signal change, locates the correspon
 The result (endTime) is the time stamp of the last observation while the laser is still focussed the desired target.
 }
 \examples{
-endPoint(df = foram72shot3, dt = 10, smoothing = 5, timeCol = "Time",
+endPoint(detectDf = foram72shot3, dt = 10, smoothing = 5, timeCol = "Time",
  signalCol = "Ca44", profile = "TRUE",  timeUnits = "seconds")
-endPoint(df = foram166shot7, dt = 8, smoothing = 7, timeCol = "Time",
+endPoint(detectDf = foram166shot7, dt = 8, smoothing = 7, timeCol = "Time",
  signalCol = "Ca44", profile = "FALSE",  timeUnits = "seconds")
-endPoint(df = foram174shot4, dt = 10, smoothing = 5, timeCol = "Time",
+endPoint(detectDf = foram174shot4, dt = 10, smoothing = 5, timeCol = "Time",
  signalCol = "Ca43", profile = "TRUE",  timeUnits = "seconds")
-endPoint(df = coral6, dt = 10, smoothing = 5, timeCol = "Time",
+endPoint(detectDf = coral6, dt = 10, smoothing = 5, timeCol = "Time",
  signalCol = "Sr86", profile = "FALSE",  timeUnits = "milliseconds")
 }

@@ -18,6 +18,6 @@ A data frame with 300 rows and 5 variables:
 coral6
 }
 \description{
-A coral from Chris Standish.
+A fragment of Acropora polystoma coral from Chris Standish.
 }
 \keyword{datasets}

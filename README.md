@@ -5,7 +5,7 @@
 
 ## Description
 
-Detect when the laser blasts through the target sample in a laser ablation mass spectrometry time resolved analysis.
+Detect when the laser ablates through the target sample in a laser ablation mass spectrometry time resolved analysis.
 
 This function imports a data frame containing a single time resolved laser ablation mass spectrometry analysis of a foraminifera (or other carbonate shell).
 It assumes that the first row contains the signal of the target sample and that background correction has already been applied.
@@ -19,18 +19,22 @@ Subsequently the function removes the rows of data that occur between the final 
 
 ## Installation
 
-You can install lablaster from GitHub
+The easiest method to install lablaster is from CRAN
+
+```r
+install.packages("lablaster")
+```
+Or install the development version from GitHub
 
 ``` r
 #install.packages("devtools")
 #library(devtools)
 install_github("alexsb1/lablaster")
 ```
-We have submitted lablaster to CRAN.
 
 ## Arguments
 
-**df** A data frame containing a single time resolved analysis, with a column referencing time and another with the corresponding measured counts data.
+**detectDf** A data frame containing a single time resolved analysis, with a column referencing time and another with the corresponding measured counts data.
 
 **dt** An integer that controls the number of observations (rows) are used in calculating a rolling lagged difference in 44Ca signal. Using a lower value for a faster blast through of chamber wall can improve end point sensitivity. Default = 10.
 
@@ -62,7 +66,7 @@ The function returns a data frame containing the columns:
 ``` r
 library(lablaster)
 # Example data: An antepenultimate chamber of Menardella exilis foraminifera 72, identified hereon as "foram72shot3".
-endPoint(df = foram72shot3, dt = 10, smoothing = 5, timeCol = "Time", signalCol = "Ca44", profile = "TRUE",  timeUnits = "seconds")
+endPoint(detectDf = foram72shot3, dt = 10, smoothing = 5, timeCol = "Time", signalCol = "Ca44", profile = "TRUE",  timeUnits = "seconds")
 ```
 
 * The simplest usage, using all the default values. \
@@ -88,7 +92,7 @@ Major and trace elements in the foraminifera test were analysed using a New Wave
 
 You should cite this function as
 
-`Searle-Barnes C A, 2022, https://github.com/alexsb1/lablaster`
+`Searle-Barnes et al., "Laser Ablation BLASt Through Endpoint in R", 2023, https://github.com/alexsb1/lablaster`
 
 ## Acknowledgements
 Thomas Ezard, J Andy Milton, Chris Standish and Gavin Foster.

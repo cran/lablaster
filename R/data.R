@@ -52,7 +52,7 @@
 
 #' Time resolved analysis by laser ablation inductively coupled plasma mass spectrometry of a branching coral, identified hereon as “coral6”.
 #'
-#' A coral from Chris Standish.
+#' A fragment of Acropora polystoma coral from Chris Standish.
 #'
 #' @format A data frame with 300 rows and 5 variables:
 #' \describe{
